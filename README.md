@@ -14,6 +14,14 @@ Users can explore travel destinations, create and manage property listings, uplo
 
 👉 [Visit WanderLust](https://wanderlust-vuwi.onrender.com/listings)
 
+## 🚧 Project Status
+
+**Currently under active development 🚀**
+
+Improvements, optimizations, and new features are currently in progress.
+
+
+
 ## ✨ Features
 
 - 🔐 User Signup & Login
