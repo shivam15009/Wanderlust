@@ -5,10 +5,7 @@ const geocodingClient = geocoding;
 geocodingClient.apiKey = mapToken;
 
 module.exports.index=async (req,res)=>{
-   const allListings= await Listing.find({})
-//    .then((res)=>{
-//     console.log(res);
-    // });
+   const allListings= await Listing.find({});
      res.render("listings/index.ejs",{allListings});
 };
 
@@ -33,6 +30,14 @@ module.exports.showListing=async (req,res)=>{
    res.render("listings/show.ejs",{listing});
 };
 
+module.exports.filterListing=async(req,res)=>{
+    const allListings=await Listing.find({category: req.query.category});
+    if(!allListings.length){
+        req.flash("error",`No Listing Found with ${req.query.category}`)
+        return res.redirect("/listings");
+    }
+    res.render("listings/filter.ejs",{allListings});
+};
 
 module.exports.createListing=async (req,res)=>{
     const query = `${req.body.listing.location}`;

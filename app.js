@@ -24,6 +24,7 @@ const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 const path=require("path");
+const Listing = require('./models/listing.js');
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"/views"));
 app.use(express.urlencoded({extended: true}));
@@ -71,9 +72,9 @@ const sessionOptions={
     },
 };
 
-// app.get("/",(req,res)=>{
-//     res.send("working root");
-// });
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+});
 
 
 
@@ -95,31 +96,15 @@ app.use((req,res,next)=>{
     next();
 });
 
-// app.get("/demouser",async (req,res)=>{
-//     let fakeUser=new User({
-//         email: "student2@gmail.com",
-//         username: "delta2-student",
-//     });
-//     let registeredUser=await User.register(fakeUser,"helloword");
-//     res.send(registeredUser);
-// });
+
 
 app.use("/listings",listingsRouter);
+
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/",userRouter);
 
-// app.get("/testListing",async (req,res)=>{
-//     let sampleListing = new Listing({
-//         title: "My New Villa",
-//         description: "By the beach",
-//         price: 1200,
-//         location: "Calungate, Goa",
-//         country: "India",
-//     });
-//     await sampleListing.save();
-//     console.log("sample saved");
-//     res.send("successful");
-// });
+
+
 
 
 app.all("/{*splat}",(req,res,next)=>{
@@ -130,7 +115,7 @@ app.all("/{*splat}",(req,res,next)=>{
 app.use((err,req,res,next)=>{
     let {status=500,message="something went wrong!"}=err;
     res.status(status).render("Error.ejs",{message});
-    // res.status(status).send(message);
+
 });
 
 app.listen(8080,()=>{

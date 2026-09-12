@@ -4,7 +4,7 @@
       <div class="col-8 offset-2">
   <h3>Create New Listing</h3>
     <form method="POST" action="/listings"
-        class="needs-validation"
+        class="needs-validation g-3"
          novalidate
          enctype="multipart/form-data">
         <div class="mb-3">
@@ -24,11 +24,30 @@
                        required></textarea>
             <div class="invalid-feedback">Please enter a short description!</div>
         </div>
-        <div class="mb-3">
+        <div class="row mb-3">
+            <div class="col-md-7">
             <label for="image" class="form-label">Upload Image</label>
-            <input type="file" name="listing[image]"
-             class="form-control"
-             required>
+            <input type="file" class="form-control" name="listing[image]" id="image" required>
+        </div>
+        <div class="col-md-5">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" class="form-select" name="listing[category]" required>
+            <option selected>Choose...</option>
+            <option>Trending</option>
+            <option>Rooms</option>
+            <option>Iconic Cities</option>
+            <option>Mountains</option>
+            <option>Castles</option>
+            <option>Amazing Pools</option>
+            <option>Camping</option>
+            <option>Farms</option>
+            <option>Arctic</option>
+            <option>Domes</option>
+            <option>Boats</option>
+            <option>Beaches</option>
+            <option >Others</option>
+            </select>
+         </div>
         </div>
         <div class="row">
         <div class="mb-3 col-md-4">

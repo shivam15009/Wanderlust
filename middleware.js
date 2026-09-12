@@ -19,7 +19,7 @@ module.exports.isLoggedIn = (req, res, next) => {
         } else if (req.headers.referer) {
             req.session.redirectUrl = req.headers.referer;
         }
-        req.flash("error", "You must be logged in before creating listing!");
+        req.flash("error", "You must be logged in to continue!");
         return res.redirect("/login");
     }
     next();

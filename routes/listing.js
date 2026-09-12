@@ -24,6 +24,7 @@ router
 //new route
 router.get("/new",isLoggedIn,listingController.renderNewform);
 
+router.get("/filters",listingController.filterListing);
 
 router
       .route("/:id")
